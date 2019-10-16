@@ -4,17 +4,21 @@ class Frontend extends Component{
     constructor(props){
         super(props);
         this.state = {
-            mobile:''    
+            mobile:'',
+            token:undefined,
+            error:false  
         }
         this.sendOtp = this.sendOtp.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
 
     handleChange(e){
-        this.setState({
-            mobile:e.target.value,
-            token:undefined
-        });
+        if(!isNaN(e.target.value)){
+            this.setState({
+                mobile:e.target.value,
+                token:undefined
+            });
+        }
     }
 
     sendOtp(e){
@@ -35,14 +39,22 @@ class Frontend extends Component{
              return res.json();
         })
         .then((json)=>{
+            console.log(json);
             if(json.success){
-                
+                this.setState({
+                    error:false,
+                    token:json.token
+                });
+            }else{
+                this.setState({
+                    error:json.message
+                });
             }
         });
     }
     
     render(){
-        let {mobile} = this.state;
+        let {mobile,error} = this.state;
         return(
             <div className = "container-fluid pt-5" style = {{backgroundColor:'#F5F5F5',height:'100vh',width:'100vw'}}>
                 <div className = "row no-gutters justify-content-center align-items-center">
@@ -63,6 +75,12 @@ class Frontend extends Component{
                                         value = {mobile} 
                                         style = {{backgroundColor:'#88a09e'}}
                                     />
+                                    {
+                                        (error)?
+                                        <div className = "text-danger"><small>{error}</small></div>
+                                        :
+                                        <div className = "text-muted"><small>Number should be of 10 digits</small></div>
+                                    }
                                 </div>
                                 <button className = "btn btn-outline-secondary"> Send Otp </button>
                             </form>
