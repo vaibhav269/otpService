@@ -7,7 +7,8 @@ class Frontend extends Component{
             mobile:'',
             token:undefined,
             otp:'',
-            error:false  
+            error:false,
+            verified:false
         }
         this.sendOtp = this.sendOtp.bind(this);
         this.verifyOtp = this.verifyOtp.bind(this);
@@ -86,28 +87,37 @@ class Frontend extends Component{
         .then((json)=>{
             console.log(json);
             if(json.success){
-                alert('succes');
+                this.setState({
+                    verified:true
+                });
             }else{
-                alert('failure');
+                this.setState({
+                    error:json.message
+                });
             }
         });
     }
     
     render(){
-        let {mobile,error,token,otp} = this.state;
+        let {mobile,error,token,otp,verified} = this.state;
         return(
             <div className = "container-fluid pt-5" style = {{height:'100vh',width:'100vw',background: '-webkit-linear-gradient(to bottom, #654ea3, #eaafc8)',background: 'linear-gradient(to bottom, #654ea3, #eaafc8)'}}>
                 <div className = "row no-gutters justify-content-center align-items-center" style = {{backgroundColor:'#'}}>
                     <div className = "col-12 text-center">
                         <h1 className = "d-none d-lg-block text-white" style = {{fontFamily:["Georgia","sans-serif"],fontSize:'500%'}}>
-                            Welcome to otp validation service
+                            Welcome to OTP validation service
                         </h1>
                         <h5 className = "d-block d-lg-none text-white" style = {{fontFamily:"Georgia"}}>
-                            Welcome to otp validation service
+                            Welcome to OTP validation service
                         </h5>
                     </div>
                 </div>
                 {
+                    (verified)?
+                    <div className = "text-dark text-center">
+                        Your mobile number is successfully Verified !!
+                    </div>
+                    :
                     (!token)?
                         <div className="row no-gutters justify-content-center align-items-center">  {/* send otp form*/}
                             <div className="col-12 col-lg-4 text-center">

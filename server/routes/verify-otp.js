@@ -17,10 +17,34 @@ module.exports = function(app){
                 message:"OTP cannot be blank"
             });
         }
-        let otps = await con.query(`Select * from otps where token = ${token} and date_added >= NOW() - INTERVAL 5 MINUTE`);
+        else if(isNaN(otp)){
+            return res.send({
+                success:false,
+                message:"Invalid OTP"
+            });
+        }
 
-        if(otps.length > 0){        //checking if otp already exists
-           
-        } 
+        try{
+            let otps = await con.query(`Select * from otps where token = '${token}' and otp = ${otp} and date_added >= NOW() - INTERVAL 5 MINUTE`);
+
+            if(otps.length > 0){        //checking if otp already exists
+            return res.send({
+                success:true,
+                message:'OTP verified'
+            })
+            }else{
+                return res.send({
+                    success:false,
+                    message:'Invalid OTP'
+                });
+            }
+        }
+        catch(err){
+            console.log(err);
+            return res.send({
+                success:false,
+                message:'Some Error Occured,Please try again later'
+            });
+        }
     });
 }
