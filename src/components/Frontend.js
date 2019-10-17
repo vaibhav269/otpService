@@ -39,7 +39,6 @@ class Frontend extends Component{
              return res.json();
         })
         .then((json)=>{
-            console.log(json);
             if(json.success){
                 this.setState({
                     error:false,
@@ -56,10 +55,15 @@ class Frontend extends Component{
     render(){
         let {mobile,error} = this.state;
         return(
-            <div className = "container-fluid pt-5" style = {{backgroundColor:'#F5F5F5',height:'100vh',width:'100vw'}}>
-                <div className = "row no-gutters justify-content-center align-items-center">
+            <div className = "container-fluid pt-5" style = {{height:'100vh',width:'100vw',background: '-webkit-linear-gradient(to bottom, #654ea3, #eaafc8)',background: 'linear-gradient(to bottom, #654ea3, #eaafc8)'}}>
+                <div className = "row no-gutters justify-content-center align-items-center" style = {{backgroundColor:'#'}}>
                     <div className = "col-12 text-center">
-                        <h1 className = "display-4" style = {{color:'#93827f'}}>Please Enter the mobile number Below</h1>
+                        <h1 className = "d-none d-lg-block text-white" style = {{fontFamily:["Georgia","sans-serif"],fontSize:'500%'}}>
+                            Welcome to otp validation service
+                        </h1>
+                        <h5 className = "d-block d-lg-none text-white" style = {{fontFamily:"Georgia"}}>
+                            Welcome to otp validation service
+                        </h5>
                     </div>
                 </div>
                 <div className = "row no-gutters justify-content-center align-items-center">
@@ -67,22 +71,23 @@ class Frontend extends Component{
                         <div className = "mt-3 text-center">
                             <form onSubmit = {this.sendOtp}>
                                 <div className = "form-group">
+                                    <label className = "text-white" style = {{fontFamily:"Lucida Grande"}}> <small>Enter your 10 digit mobile number below to continue </small></label>
                                     <input 
                                         type = "mobile" 
-                                        className = "text-white border-0 p-2 rounded form-control text-center" 
+                                        className = "p-2 rounded form-control text-center" 
                                         id = "mobile" 
                                         onChange = {this.handleChange} 
                                         value = {mobile} 
-                                        style = {{backgroundColor:'#88a09e'}}
+                                        style = {{border:'o.8px solid #88a09e'}}
                                     />
                                     {
                                         (error)?
-                                        <div className = "text-danger"><small>{error}</small></div>
+                                        <div style = {{color:'#9b1d29'}}><small>{error}</small></div>
                                         :
-                                        <div className = "text-muted"><small>Number should be of 10 digits</small></div>
+                                        null
                                     }
                                 </div>
-                                <button className = "btn btn-outline-secondary"> Send Otp </button>
+                                <button className = "btn btn-outline-dark"> Send Otp </button>
                             </form>
                         </div>
                     </div>
