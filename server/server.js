@@ -13,6 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('dist')); 
 
 require('./routes/send-otp')(app);
+require('./routes/verify-otp')(app);
 
 app.listen(PORT, () => {
   console.log(`😎 Server is listening on port ${PORT}`);
