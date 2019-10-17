@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import {Link} from 'react-router-dom';
 
 class Frontend extends Component{
     constructor(props){
@@ -85,7 +86,6 @@ class Frontend extends Component{
              return res.json();
         })
         .then((json)=>{
-            console.log(json);
             if(json.success){
                 this.setState({
                     verified:true
@@ -102,9 +102,14 @@ class Frontend extends Component{
         let {mobile,error,token,otp,verified} = this.state;
         return(
             <div className = "container-fluid pt-5" style = {{height:'100vh',width:'100vw',background: '-webkit-linear-gradient(to bottom, #654ea3, #eaafc8)',background: 'linear-gradient(to bottom, #654ea3, #eaafc8)'}}>
-                <div className = "row no-gutters justify-content-center align-items-center" style = {{backgroundColor:'#'}}>
+                {/* <div className = "row no-gutters justify-content-center align-items-center">
                     <div className = "col-12 text-center">
-                        <h1 className = "d-none d-lg-block text-white" style = {{fontFamily:["Georgia","sans-serif"],fontSize:'500%'}}>
+                        <Link to = "/backend">Test</Link>
+                    </div>
+                </div> */}
+                <div className = "row no-gutters justify-content-center align-items-center">
+                    <div className = "col-12 text-center">
+                        <h1 className = "d-none d-lg-block text-white" style = {{fontFamily:["Georgia","sans-serif"],fontSize:'400%'}}>
                             Welcome to OTP validation service
                         </h1>
                         <h5 className = "d-block d-lg-none text-white" style = {{fontFamily:"Georgia"}}>
