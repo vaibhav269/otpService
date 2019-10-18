@@ -1,0 +1,114 @@
+{
+	"info": {
+		"_postman_id": "2f250a7e-3ff5-4ad3-9b03-21aed7a3ec55",
+		"name": "otpService",
+		"description": "Endpoints available:-\n1./api/sent-otp =  TYPE:POST | PARAMETERS: JSON object with keys :{mobile} | RESPONSE - JSON object with \t\tkeys:{success,message/token}\n\n2./api/verify-otp = TYPE:POST | PARAMETERS: JSON object with keys :{token,otp}  | RESPONSE - JSON object with keys:{success,message}\n\n3./api/get-details = TYPE:GET | PARAMETERS: NONE  | RESPONSE - JSON object with keys:{success,message/details}\n\n4./api/get-summary = TYPE:GET | PARAMETERS: NONE  | RESPONSE - JSON object with keys:{success,message/smsSent,UniqueNum}\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "sendind OTP",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"mobile\":\"7417629324\"\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/api/send-otp",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"send-otp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "verifying otp",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"token\":\"0Aztss8LiwvWC0Cg\",\n\t\"otp\":\"566541\"\n}"
+				},
+				"url": {
+					"raw": "localhost:3000/api/verify-otp",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"verify-otp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getting SMS sent and unique mobile numbers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3000/api/get-summary",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"get-summary"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Getting unique mobile numbers and their OTP count",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:3000/api/get-details",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"get-details"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
