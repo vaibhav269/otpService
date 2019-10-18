@@ -1,19 +1,27 @@
 import React,{Component} from 'react';
 import ReactTable from 'react-table';
+import "react-table/react-table.css";
 
 class Home extends Component{
     constructor(props){
         super(props);
         this.columns=[
             {
-                Header:'Mobile',
-                accessor:'mobile',
-                filterable:true
+                Header: "Mobile Number",
+                accessor: "mobile",
+                filterable:true,
+                headerStyle:{
+                    fontWeight:'bold',
+                    color:'white'
+                },
             },
             {
-                Header:'Total OTPs Sent',
-                accessor:'count',
-                filterable:true
+                Header: "No of OTPs sent",
+                accessor: "count",
+                filterable:true,
+                headerStyle:{
+                    color:'white'
+                },
             }
         ]
         this.state = {
@@ -83,14 +91,18 @@ class Home extends Component{
                         </div>
                     </div>
                 </div>
-                <div className = "row no-gutters justify-content-center align-items-center" style = {{backgroundColor:'#'}}>
+                <div className = "row no-gutters justify-content-center align-items-center mt-5" style = {{backgroundColor:'#'}}>
                     <div className = "col-12 text-center">
                         <ReactTable
                             columns={columns}
                             data={details}
+                            pageSize={10}
+                            showPageSizeOptions={false}
+                            footerClassName = "text-white"
                             getTdProps={(state, rowInfo, column) => {
                                 return {
                                     style: {
+                                        color:'white',
                                         textAlign: 'center'
                                     }
                                 }

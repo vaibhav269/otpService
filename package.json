@@ -29,6 +29,7 @@
     "react-router-dom": "^5.0.1",
     "react-table": "^6.10.3",
     "rimraf": "^3.0.0",
+    "style-loader": "^1.0.0",
     "url-loader": "^2.1.0"
   },
   "devDependencies": {

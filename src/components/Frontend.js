@@ -101,12 +101,13 @@ class Frontend extends Component{
     render(){
         let {mobile,error,token,otp,verified} = this.state;
         return(
-            <div className = "container-fluid pt-5" style = {{height:'100vh',width:'100vw',background: '-webkit-linear-gradient(to bottom, #654ea3, #eaafc8)',background: 'linear-gradient(to bottom, #654ea3, #eaafc8)'}}>
-                {/* <div className = "row no-gutters justify-content-center align-items-center">
-                    <div className = "col-12 text-center">
-                        <Link to = "/backend">Test</Link>
+            <div className = "container-fluid pt-3" style = {{height:'100vh',width:'100vw',background: '-webkit-linear-gradient(to bottom, #654ea3, #eaafc8)',background: 'linear-gradient(to bottom, #654ea3, #eaafc8)'}}>
+                <div className = "row no-gutters justify-content-center align-items-center">
+                    <div className = "col-12 text-right">
+                        <Link to = "/backend" className = "btn btn-light">Go to Admin Panel</Link>
                     </div>
-                </div> */}
+                </div>
+                <hr/>
                 <div className = "row no-gutters justify-content-center align-items-center">
                     <div className = "col-12 text-center">
                         <h1 className = "d-none d-lg-block text-white" style = {{fontFamily:["Georgia","sans-serif"],fontSize:'400%'}}>
