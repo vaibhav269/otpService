@@ -6,10 +6,6 @@ const pool = mysql.createPool({
     user: 'vaibhav',
     password: "tester",
     database:'daalchini'
-    // host:'159.65.99.182',
-    // user: "ojipfmig_vaibhav",
-    // password:'tester@0409',
-    // database:'ojipfmig_nojhikjhik'
 });
 
 pool.query = util.promisify(pool.query);    //to make it support async await 
